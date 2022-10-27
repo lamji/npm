@@ -6,16 +6,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Grid, Divider } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Card from "../Card"
+import useModel from "src/hooks/Cart/useModel";
+import {CardProps} from "../../types"
+import { HOCProvider } from "src/provider";
 
-export interface CardProps {
-  label: string,
-  dataIn: {
-    data?: { [key: string]: any }[];
-  }  
-}
 
 const Cart = (props: CardProps) => {
   const {dataIn} = props
+  const MODEL = useModel({dataIn})
   return (
     <Box sx={{ width: "90%", margin: "0 auto", flexGrow: 1, mt:5 }}>
       <Grid
@@ -77,4 +75,7 @@ const Cart = (props: CardProps) => {
   );
 };
 
-export default Cart;
+export default HOCProvider(
+  Cart
+);
+

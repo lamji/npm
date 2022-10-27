@@ -20,6 +20,7 @@ npm i addtocart-mini-app --legacy-peer-deps
 
 ## Usage
 
+
 ```sh
 import {Cart } from "addtocart-mini-app"
 

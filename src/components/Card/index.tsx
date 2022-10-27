@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { Grid, Divider, CardMedia } from "@mui/material";
+import "../../styles/Styles.css"
 
 export interface cardProps {
   dataIn?: {
@@ -33,7 +34,7 @@ function index(props: cardProps) {
           {props?.dataIn?.title}
         </Grid>
         <Grid item xs={4} sx={{p:1}}>
-          <span>-</span><span>{props?.dataIn?.quantity}</span><span>+</span>
+          <span className="qtybutton">-</span><span>{props?.dataIn?.quantity}</span><span className="qtybutton">+</span>
         </Grid>
         <Grid item xs={3} sx={{p:1}}>
           price
