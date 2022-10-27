@@ -32,6 +32,12 @@ import {Cart } from "addtocart-mini-app"
 ## Types
 
 ```sh
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+
 {
   dataLoad: {
     // Table
