@@ -3,8 +3,8 @@
 ## Changelogs
 
 ```sh
-
-- v1.0.1 - Adding cart and card components
+- v0.1.1 - Adding redux
+- v0.0.1 - Adding cart and card components
 ```
 
 ## Installation

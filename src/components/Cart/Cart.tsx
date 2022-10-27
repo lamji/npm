@@ -14,6 +14,8 @@ import { HOCProvider } from "src/provider";
 const Cart = (props: CardProps) => {
   const {dataIn} = props
   const MODEL = useModel({dataIn})
+
+  console.log(MODEL)
   return (
     <Box sx={{ width: "90%", margin: "0 auto", flexGrow: 1, mt:5 }}>
       <Grid
@@ -53,9 +55,9 @@ const Cart = (props: CardProps) => {
             color="initial"
             sx={{ fontSize: "10px", color: "gray" }}
           >
-            You have 4 items in your cart
+            You have {MODEL?.cartQty} items in your cart
           </Typography>
-          {dataIn?.data?.map(res => {
+          {MODEL?.state?.data?.map((res: any) => {
             return (
               <Box  key={res?.id}>
                <Card dataIn={res}/>
@@ -63,9 +65,7 @@ const Cart = (props: CardProps) => {
 
             )
           })}
-    
         </Grid>
-
         <Grid item xs={4}
         sx={{p:2}}>
           Cart
