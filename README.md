@@ -29,10 +29,10 @@ import {Cart } from "addtocart-mini-app"
 <TableList {...exampleData} />
 ```
 ## Props
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+Name | Types | Default
+------------- | ------------- | -------------
+Content Cell  | Content Cell | Content Cell
+Content Cell  | Content Cell | Content Cell
 
 ## Types
 
