@@ -28,14 +28,16 @@ import {Cart } from "addtocart-mini-app"
 
 <TableList {...exampleData} />
 ```
-
-## Types
-
-```sh
+## Props
 First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
 Content Cell  | Content Cell
+
+## Types
+
+```sh
+
 
 
 {
