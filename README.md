@@ -24,8 +24,6 @@ npm i addtocart-mini-app --legacy-peer-deps
 ```
 
 ## Usage
-
-
 ```sh
 
 import {Cart } from "addtocart-mini-app"
@@ -70,6 +68,19 @@ function App() {
 export default App;
 
 ```
+## Props
+| Props  | Types| Default Value  | Required  | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- | 
+| dataOut  | Function  |  None | True  | Dataout will handle the next action after clicking checkout |
+| dataIn  | Object | None  | True  | Object with action object that will handle shoplink, decreaseQty, increaseQty, removeItems |
+| shoplink | Function | None | True | This will handle to go back to shop |
+| decreaseQty | Function | None | True | This will handle the minus button in a cart, use this to update the quantity of the item in state |
+| increaseQty | Function | None | True | This will handle the plus button in a cart, use this to update the quantity of the item in state |
+| removeItems | Function | None | True | This will handle the remove item in a cart, use this to to remove item from a cart using redux |
+| dataLoad | Array of object | None | True | Initial data of a cart |
+
+
+
 
 ## Props Types
 ```sh
