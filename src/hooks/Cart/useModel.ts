@@ -6,19 +6,27 @@ import React from "react";
 const useModel = (props:CardProps) => {
     const dispatch = useDispatch()
     const [cartQty,setCartQty] = React.useState(0)
-    const {dataIn} = props
+    const {dataIn,dataLoad, dataOut} = props
+    const [total,setTotal] = React.useState(0)
+    const action = dataIn?.action
+
     const state = useSelector((state: any) => state?.cart?.cartItems);
     const getQty = async () => {
         if(state?.data){
             const mapState = await state?.data.map((res:any )=> {
+                setTotal((prevState) => prevState + res?.quantity * res?.price)
                 setCartQty((prevState) => prevState + res?.quantity)
                 return res
             })
         }
 
     }
+
+    const handleDataOut = () => {
+        dataOut([...state?.data,{total:total}])
+    }
     React.useEffect( () => {
-        dispatch(setShoppingCart(dataIn))
+        dispatch(setShoppingCart(dataLoad))
         getQty()
     },[state])
     
@@ -26,7 +34,10 @@ const useModel = (props:CardProps) => {
     return {
         state,
         cartQty,
-        getQty
+        getQty,
+        action,
+        handleDataOut,
+        total
     }
 }
 

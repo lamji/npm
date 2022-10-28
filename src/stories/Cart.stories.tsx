@@ -15,11 +15,12 @@ const Template: ComponentStory<typeof Cart> = (args) => <Cart {...args} />;
 export const Cartsample = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Cartsample.args = {
-  label: 'Button',
-  dataIn: {
+  dataOut: (i: any) => console.log("dataOut", i),
+  dataLoad: {
     data:[
       {
         id: 1,
+        dataAdded: "Fri Oct 28 2022 12:33:52 GMT+0800 (Philippine Standard Time)",
         title: "Product 1",
         description: "Best headphone",
         price: 120.00,
@@ -31,9 +32,18 @@ Cartsample.args = {
         title: "Product 2",
         description: "Best headphone 2",
         price: 100.00,
+        dateAdded: "Fri Oct 28 2022 12:33:01 GMT+0800 (Philippine Standard Time)",
         quantity: 1,
         image: "https://www.nicepng.com/png/detail/151-1512944_red-headphone-png-image-background-beats-by-dr.png"
     }
-    ]
+    ],
+  },
+  dataIn: {
+    action:{
+      shoplink: () => alert("go to shop"),
+      decreaseQty: (i:any) => alert(`decrease quantity of item with the id of ${i}` ),
+      increaseQty: (i:any) => alert(`increase quantity of item with the id of ${i}` ),
+      removeItems: (i:any) => alert(`remove this item with the id of ${i}`)
+    }
   }
 };
