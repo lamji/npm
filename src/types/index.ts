@@ -4,7 +4,6 @@ export interface CardProps {
       data?: { [key: string]: any }[];
     }
     dataIn: {
-      data?: { [key: string]: any }[];
       action?: {
         shoplink: () => void,
         decreaseQty: (i:any) => void,
