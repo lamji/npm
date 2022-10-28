@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Grid, Divider, CardMedia } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
@@ -82,79 +83,101 @@ const Cart = (props: CardProps) => {
           </Typography>
           <Box>
             {MODEL?.state.length != 0 ? (
-              MODEL?.state?.data.map((res: any) => {
-                return (
-                  <Box
-                    sx={{
-                      my: 2,
-                      p: 1,
-                      border: "1px solid gray",
-                      borderRadius: 1,
-                    }}
-                    key={res?.id}
-                  >
-                    <Grid
-                      container
-                      direction="row"
-                      justifyContent="center"
-                      alignItems="center"
+              MODEL?.state?.data.length > 0 ? 
+              (
+                MODEL?.state?.data.map((res: any) => {
+                  return (
+                    <Box
+                      sx={{
+                        my: 2,
+                        p: 1,
+                        border: "1px solid gray",
+                        borderRadius: 1,
+                      }}
+                      key={res?.id}
                     >
-                      <Grid item xs={2}>
-                        <Box sx={{ width: 50, p: 1 }}>
-                          <CardMedia
-                            component="img"
-                            height="30"
-                            image={res.image}
-                            alt={res?.title}
-                          />
-                        </Box>
+                      <Grid
+                        container
+                        direction="row"
+                        justifyContent="center"
+                        alignItems="center"
+                      >
+                        <Grid item xs={2}>
+                          <Box sx={{ width: 50, p: 1 }}>
+                            <CardMedia
+                              component="img"
+                              height="30"
+                              image={res.image}
+                              alt={res?.title}
+                            />
+                          </Box>
+                        </Grid>
+                        <Grid item xs={3} sx={{ p: 1 }}>
+                          {res?.title}
+                        </Grid>
+                        <Grid item xs={3} sx={{ p: 1 }}>
+                          <span
+                            className="qtybutton"
+                            onClick={() => MODEL?.action?.decreaseQty(res?.id)}
+                          >
+                            -
+                          </span>
+                          <span>{res.quantity}</span>
+                          <span
+                            className="qtybutton"
+                            onClick={() => MODEL?.action?.increaseQty(res?.id)}
+                          >
+                            +
+                          </span>
+                        </Grid>
+                        <Grid item xs={3} sx={{ p: 1 }}>
+                          ₱ {(res?.quantity * res?.price).toFixed(2)}
+                        </Grid>
+                        <Grid item xs={1} sx={{ p: 1 }}>
+                          <Button
+                            variant="text"
+                            startIcon={<DeleteIcon />}
+                            onClick={() => MODEL?.action?.removeItems(res?.id)}
+                            sx={{
+                              "&:hover": {
+                                //you want this to be the same as the backgroundColor above
+                                backgroundColor: "transparent",
+                              },
+                              "&:active": {
+                                //you want this to be the same as the backgroundColor above
+                                backgroundColor: "transparent",
+                              },
+                              color: "black",
+                              p: 0,
+                            }}
+                          ></Button>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={3} sx={{ p: 1 }}>
-                        {res?.title}
-                      </Grid>
-                      <Grid item xs={3} sx={{ p: 1 }}>
-                        <span
-                          className="qtybutton"
-                          onClick={() => MODEL?.action?.decreaseQty(res?.id)}
-                        >
-                          -
-                        </span>
-                        <span>{res.quantity}</span>
-                        <span
-                          className="qtybutton"
-                          onClick={() => MODEL?.action?.increaseQty(res?.id)}
-                        >
-                          +
-                        </span>
-                      </Grid>
-                      <Grid item xs={3} sx={{ p: 1 }}>
-                        ₱ {(res?.quantity * res?.price).toFixed(2)}
-                      </Grid>
-                      <Grid item xs={1} sx={{ p: 1 }}>
-                        <Button
-                          variant="text"
-                          startIcon={<DeleteIcon />}
-                          onClick={() => MODEL?.action?.removeItems(res?.id)}
-                          sx={{
-                            "&:hover": {
-                              //you want this to be the same as the backgroundColor above
-                              backgroundColor: "transparent",
-                            },
-                            "&:active": {
-                              //you want this to be the same as the backgroundColor above
-                              backgroundColor: "transparent",
-                            },
-                            color: "black",
-                            p: 0,
-                          }}
-                        ></Button>
-                      </Grid>
-                    </Grid>
+                    </Box>
+                  );
+                })
+              )
+              : 
+              (
+                <Box sx={{
+                  height: 300,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}>
+                  <Box sx={{
+                    textAlign: "center"
+                  }}>
+                    <AddShoppingCartIcon sx={{
+                      width: 100
+                    }}/>
+                    <Typography variant="h6" fontWeight={700}>You don't have item in a cart</Typography>
                   </Box>
-                );
-              })
+                </Box>
+              )
+        
             ) : (
-              <></>
+             <></>
             )}
           </Box>
         </Grid>

@@ -3,6 +3,7 @@
 ## Changelogs
 
 ```sh
+- v0.3.1 - empty cart added
 - v0.2.1 - Adding props
 - v0.1.1 - Adding redux
 - v0.0.1 - Adding cart and card components
@@ -25,7 +26,6 @@ npm i addtocart-mini-app --legacy-peer-deps
 ```sh
 
 import {Cart } from "addtocart-mini-app"
-const dataOut: (i: any) => console.log("dataOut", i)
 const dataLoad = {
   data:[
     {
@@ -59,7 +59,7 @@ const dataIn = {
 function App() {
   return (
     <div className="">
-      <Cart dataLoad={dataLoad} dataIn={}/>
+      <Cart dataLoad={dataLoad} dataIn={dataIn} data={(i) => console.log(i)}/>
     </div>
   );
 }
@@ -69,16 +69,21 @@ export default App;
 ```
 
 ## Props Types
-Name | data | Types
-------------- | ------------- | -------------
-dataOut  | (i:any) => void | Function
-dataLoad | data?: { [key: string]: any }[];| Array
-dataIn   | action?: {
-              shoplink: () => void,
-              decreaseQty: (i:any) => void,
-              increaseQty: (i:any) => void,
-              removeItems: (i:any) => void 
-            }  | Obect of function
+```sh
+dataOut: (i:any) => void,
+dataLoad: {
+  data?: { [key: string]: any }[];
+}
+dataIn: {
+  action?: {
+    shoplink: () => void,
+    decreaseQty: (i:any) => void,
+    increaseQty: (i:any) => void,
+    removeItems: (i:any) => void 
+  }
+}  
+
+```
 
 ## Node Version
 
