@@ -1,5 +1,7 @@
 # ADD TO CART Mini-app
 
+![My Image](mini-app-shoppingcart.png)
+
 ## Changelogs
 
 ```sh
