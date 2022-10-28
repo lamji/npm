@@ -5,7 +5,8 @@
 ## Changelogs
 
 ```sh
-- v0.3.1 - empty cart added
+- v0.4.1 - Add readme image
+- v0.3.1 - Empty cart added
 - v0.2.1 - Adding props
 - v0.1.1 - Adding redux
 - v0.0.1 - Adding cart and card components
