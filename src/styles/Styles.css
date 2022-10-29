@@ -1,3 +1,73 @@
-button{
-    font-size: 60px;
+.qtybutton {
+    border: 1px solid gray;
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
 }
+.qtyController{
+    min-width: 20px;
+    text-align: center;
+}
+.qtyWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* Button */
+.ButtonCheckout.MuiButtonBase-root:hover{
+    background-color: transparent;
+    color: black;
+}
+.ButtonCheckout.MuiButtonBase-root{
+    background: red;
+    color: white;
+}
+.Button.MuiButtonBase-root:hover {
+    background-color: transparent;
+}
+.Button.MuiButtonBase-root {
+    color: black;
+    padding: 0px;
+    background-color: transparent;
+}
+.ButtonDelete.MuiButtonBase-root {
+    color: black !important;
+}
+.ButtonDelete.MuiButtonBase-root:hover {
+    color: red !important;
+    background-color: transparent;
+}
+
+/* Box */
+.hederButtonBox {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.BoxContainer {
+    width: 95%; 
+    margin: 0 auto;
+    flex-grow: 1; 
+    margin-top: 5 
+}
+.BoxCard{
+    margin: 20px 0;
+    padding: 1;
+    border: 1px solid gray;
+    border-radius: 5px
+}
+.BoxEmptyCart{
+    height: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Typography */
+.Secondary-Text.MuiTypography-root {
+    font-size: 10px;
+    color: gray;
+}
+/* 
+MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium sample css-1e6y48t-MuiButtonBase-root-MuiButton-root */

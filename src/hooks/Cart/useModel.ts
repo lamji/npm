@@ -1,29 +1,53 @@
-export type Person = {
-    name: string;
-    age: number;
-  };
+import { CartItemsProps } from "src/types";
+import {useDispatch,useSelector} from "react-redux"
+import  {setShoppingCart}  from "src/store/actions/cart";
+import React from "react";
 
+const useModel = (props:CartItemsProps) => {
+    const dispatch = useDispatch()
+    const [cartQty,setCartQty] = React.useState(0)
+    const {dataIn,dataLoad, dataOut} = props
+    const [total,setTotal] = React.useState(0)
+    const action = dataIn?.action
 
-const useModel = () => {
+    const CartItems = useSelector((state: any) => state?.cart?.cartItems);
 
-    const dummydata = [
-        {
-            title: "Product 1",
-            description: "Best headphone",
-            price: 120.00,
-            quantity: 3,
-            image: "https://i.pinimg.com/originals/0d/86/b1/0d86b14bb6503907498ebff62062ae12.png"
-        },
-        {
-            title: "Product 2",
-            description: "Best headphone 2",
-            price: 100.00,
-            quantity: 1,
-            image: "https://www.nicepng.com/png/detail/151-1512944_red-headphone-png-image-background-beats-by-dr.png"
+    function numberWithCommas(x:any) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    const getQty = async () => {
+        var tempTotal = 0
+        var tempQty = 0
+        if(CartItems?.data){
+            const mapState = await CartItems?.data.map((cartItem:any )=> {
+                tempTotal += cartItem?.quantity * cartItem?.price
+                tempQty += cartItem?.quantity
+            })
+            setCartQty(tempQty)
+            setTotal(tempTotal)
         }
-    ]
+    }
+    const handleDataOut = () => {
+        dataOut([...CartItems?.data,{total:total}])
+    }
+    
+    React.useEffect( () => {
+        dispatch(setShoppingCart(dataLoad))
+    },[props])
+
+    React.useEffect( () => {
+        getQty()
+    },[CartItems])
+    
     return {
-        dummydata
+        CartItems,
+        cartQty,
+        getQty,
+        action,
+        handleDataOut,
+        total,
+        numberWithCommas
     }
 }
 
