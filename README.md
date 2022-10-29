@@ -5,7 +5,7 @@
 ## Changelogs
 
 ```sh
-- v0.4.1 - Patch Release (state not updated)
+- v0.4.2 - Patch Release (state not updated)
 - v0.4.1 - Add readme image
 - v0.3.1 - Empty cart added
 - v0.2.1 - Adding props
@@ -70,6 +70,12 @@ export default App;
 
 ```
 ## Props
+
+Name | Types | Default
+------------- | ------------- | -------------
+Content Cell  | Content Cell | Content Cell
+Content Cell  | Content Cell | Content Cell
+=========
 | Props  | Types| Default Value  | Required  | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- | 
 | dataOut  | Function  |  None | True  | Dataout will handle the next action after clicking checkout |
