@@ -71,11 +71,6 @@ export default App;
 ```
 ## Props
 
-Name | Types | Default
-------------- | ------------- | -------------
-Content Cell  | Content Cell | Content Cell
-Content Cell  | Content Cell | Content Cell
-=========
 | Props  | Types| Default Value  | Required  | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- | 
 | dataOut  | Function  |  None | True  | Dataout will handle the next action after clicking checkout |
