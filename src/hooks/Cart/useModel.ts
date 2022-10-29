@@ -1,9 +1,9 @@
-import { CardProps } from "src/types";
+import { CartItemsProps } from "src/types";
 import {useDispatch,useSelector} from "react-redux"
 import  {setShoppingCart}  from "src/store/actions/cart";
 import React from "react";
 
-const useModel = (props:CardProps) => {
+const useModel = (props:CartItemsProps) => {
     const dispatch = useDispatch()
     const [cartQty,setCartQty] = React.useState(0)
     const {dataIn,dataLoad, dataOut} = props

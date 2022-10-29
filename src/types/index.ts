@@ -1,4 +1,4 @@
-export interface CardProps {
+export interface CartItemsProps {
     dataOut: (i:any) => void,
     dataLoad: {
       data?: { [key: string]: any }[];

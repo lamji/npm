@@ -8,11 +8,11 @@ import { Grid, Divider, CardMedia } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
 import useModel from "src/hooks/Cart/useModel";
-import { CardProps } from "../../types";
+import { CartItemsProps } from "../../types";
 import { HOCProvider } from "src/provider";
 import "../../styles/Styles.css";
 
-const Cart = (props: CardProps) => {
+const Cart = (props: CartItemsProps) => {
   const Model = useModel(props);
 
   return (

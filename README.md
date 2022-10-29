@@ -5,6 +5,7 @@
 ## Changelogs
 
 ```sh
+- v0.4.1 - Patch Release (state not updated)
 - v0.4.1 - Add readme image
 - v0.3.1 - Empty cart added
 - v0.2.1 - Adding props
@@ -80,24 +81,6 @@ export default App;
 | dataLoad | Array of object | None | True | Initial data of a cart |
 
 
-
-
-## Props Types
-```sh
-dataOut: (i:any) => void,
-dataLoad: {
-  data?: { [key: string]: any }[];
-}
-dataIn: {
-  action?: {
-    shoplink: () => void,
-    decreaseQty: (i:any) => void,
-    increaseQty: (i:any) => void,
-    removeItems: (i:any) => void 
-  }
-}  
-
-```
 
 ## Node Version
 
