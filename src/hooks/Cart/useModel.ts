@@ -10,34 +10,44 @@ const useModel = (props:CardProps) => {
     const [total,setTotal] = React.useState(0)
     const action = dataIn?.action
 
-    const state = useSelector((state: any) => state?.cart?.cartItems);
+    const CartItems = useSelector((state: any) => state?.cart?.cartItems);
+
+    function numberWithCommas(x:any) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     const getQty = async () => {
-        if(state?.data){
-            const mapState = await state?.data.map((res:any )=> {
-                setTotal((prevState) => prevState + res?.quantity * res?.price)
-                setCartQty((prevState) => prevState + res?.quantity)
-                return res
+        var tempTotal = 0
+        var tempQty = 0
+        if(CartItems?.data){
+            const mapState = await CartItems?.data.map((cartItem:any )=> {
+                tempTotal += cartItem?.quantity * cartItem?.price
+                tempQty += cartItem?.quantity
             })
+            setCartQty(tempQty)
+            setTotal(tempTotal)
         }
-
     }
-
     const handleDataOut = () => {
-        dataOut([...state?.data,{total:total}])
+        dataOut([...CartItems?.data,{total:total}])
     }
+    
     React.useEffect( () => {
         dispatch(setShoppingCart(dataLoad))
-        getQty()
-    },[state])
-    
+    },[props])
 
+    React.useEffect( () => {
+        getQty()
+    },[CartItems])
+    
     return {
-        state,
+        CartItems,
         cartQty,
         getQty,
         action,
         handleDataOut,
-        total
+        total,
+        numberWithCommas
     }
 }
 

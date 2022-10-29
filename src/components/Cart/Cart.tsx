@@ -13,11 +13,10 @@ import { HOCProvider } from "src/provider";
 import "../../styles/Styles.css";
 
 const Cart = (props: CardProps) => {
-  const MODEL = useModel(props);
+  const Model = useModel(props);
 
-  console.log(MODEL?.total)
   return (
-    <Box sx={{ width: "90%", margin: "0 auto", flexGrow: 1, mt: 5 }}>
+    <Box className="BoxContainer">
       <Grid
         container
         direction="row"
@@ -25,43 +24,22 @@ const Cart = (props: CardProps) => {
         alignItems="flex-start"
       >
         <Grid item xs={12} sx={{ p: 2 }}>
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between"
-          }}>
+          <Box className="hederButtonBox">
             <Button
               variant="text"
+              className="Button ButtonDelete"
               startIcon={<ArrowBackIcon />}
-              onClick={MODEL?.action?.shoplink}
-              sx={{
-                "&:hover": {
-                  //you want this to be the same as the backgroundColor above
-                  backgroundColor: "transparent",
-                },
-                color: "black",
-                p: 0,
-              }}
+              onClick={Model?.action?.shoplink}
             >
               Back to shop
             </Button>
-
             <Button
               variant="contained"
+              className="ButtonCheckout"
               endIcon={<ArrowForwardIcon />}
-              onClick={MODEL?.handleDataOut}
-              sx={{
-                background: "red",
-                color: "white",
-                "&:hover": {
-                  //you want this to be the same as the backgroundColor above
-                  backgroundColor: "transparent",
-                  color: "black",
-                },
-                p: 1,
-              }}
+              onClick={Model?.handleDataOut}
             >
-              Checkout ₱{MODEL?.total.toFixed(2)}
+              Checkout ₱{Model?.numberWithCommas(Model?.total.toFixed(2))}
             </Button>
           </Box>
 
@@ -76,26 +54,17 @@ const Cart = (props: CardProps) => {
           </Typography>
           <Typography
             variant="body1"
-            color="initial"
-            sx={{ fontSize: "10px", color: "gray" }}
+            className="Secondary-Text"
           >
-            You have {MODEL?.cartQty} items in your cart
+            You have {Model?.cartQty} items in your cart
           </Typography>
           <Box>
-            {MODEL?.state.length != 0 ? (
-              MODEL?.state?.data.length > 0 ? 
+            {Model?.CartItems.length != 0 ? (
+              Model?.CartItems?.data.length > 0 ? 
               (
-                MODEL?.state?.data.map((res: any) => {
+                Model?.CartItems?.data.map((cartItem: any) => {
                   return (
-                    <Box
-                      sx={{
-                        my: 2,
-                        p: 1,
-                        border: "1px solid gray",
-                        borderRadius: 1,
-                      }}
-                      key={res?.id}
-                    >
+                    <Box className="BoxCard" key={cartItem?.id} >
                       <Grid
                         container
                         direction="row"
@@ -107,49 +76,41 @@ const Cart = (props: CardProps) => {
                             <CardMedia
                               component="img"
                               height="30"
-                              image={res.image}
-                              alt={res?.title}
+                              image={cartItem.image}
+                              alt={cartItem?.title}
                             />
                           </Box>
                         </Grid>
                         <Grid item xs={3} sx={{ p: 1 }}>
-                          {res?.title}
+                          {cartItem?.title}
                         </Grid>
-                        <Grid item xs={3} sx={{ p: 1 }}>
+                        <Grid item xs={3} className="qtyWrapper" >
                           <span
                             className="qtybutton"
-                            onClick={() => MODEL?.action?.decreaseQty(res?.id)}
+                            onClick={() => Model?.action?.decreaseQty(cartItem?.id)}
                           >
                             -
                           </span>
-                          <span>{res.quantity}</span>
+                          <Box className="qtyController">
+                            <Typography variant="body1">{cartItem.quantity}</Typography>
+                          </Box>
+
                           <span
                             className="qtybutton"
-                            onClick={() => MODEL?.action?.increaseQty(res?.id)}
+                            onClick={() => Model?.action?.increaseQty(cartItem?.id)}
                           >
                             +
                           </span>
                         </Grid>
                         <Grid item xs={3} sx={{ p: 1 }}>
-                          ₱ {(res?.quantity * res?.price).toFixed(2)}
+                          ₱ {Model?.numberWithCommas((cartItem?.quantity * cartItem?.price).toFixed(2))}
                         </Grid>
-                        <Grid item xs={1} sx={{ p: 1 }}>
+                        <Grid item xs={1} sx={{ p: 1 }} >
                           <Button
                             variant="text"
+                            className="ButtonDelete"
                             startIcon={<DeleteIcon />}
-                            onClick={() => MODEL?.action?.removeItems(res?.id)}
-                            sx={{
-                              "&:hover": {
-                                //you want this to be the same as the backgroundColor above
-                                backgroundColor: "transparent",
-                              },
-                              "&:active": {
-                                //you want this to be the same as the backgroundColor above
-                                backgroundColor: "transparent",
-                              },
-                              color: "black",
-                              p: 0,
-                            }}
+                            onClick={() => Model?.action?.removeItems(cartItem?.id)}
                           ></Button>
                         </Grid>
                       </Grid>
@@ -159,18 +120,11 @@ const Cart = (props: CardProps) => {
               )
               : 
               (
-                <Box sx={{
-                  height: 300,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}>
+                <Box className="BoxEmptyCart">
                   <Box sx={{
                     textAlign: "center"
                   }}>
-                    <AddShoppingCartIcon sx={{
-                      width: 100
-                    }}/>
+                    <AddShoppingCartIcon />
                     <Typography variant="h6" fontWeight={700}>You don't have item in a cart</Typography>
                   </Box>
                 </Box>
