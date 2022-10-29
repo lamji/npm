@@ -5,7 +5,7 @@
 ## Changelogs
 
 ```sh
-- v0.4.1 - Patch Release (state not updated)
+- v0.4.2 - Patch Release (state not updated)
 - v0.4.1 - Add readme image
 - v0.3.1 - Empty cart added
 - v0.2.1 - Adding props
