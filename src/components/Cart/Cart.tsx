@@ -2,8 +2,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CloseIcon from "@mui/icons-material/Close";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Grid, Divider, CardMedia } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
@@ -33,14 +34,16 @@ const Cart = (props: CartItemsProps) => {
             >
               Back to shop
             </Button>
-            <Button
-              variant="contained"
-              className="ButtonCheckout"
-              endIcon={<ArrowForwardIcon />}
-              onClick={Model?.handleDataOut}
-            >
-              Checkout ₱{Model?.numberWithCommas(Model?.total.toFixed(2))}
-            </Button>
+            <Box className="ButtonCheckoutWrappr">
+              <Button
+                variant="contained"
+                className="ButtonCheckout"
+                endIcon={<ArrowForwardIcon />}
+                onClick={Model?.handleDataOut}
+              >
+                Checkout ₱{Model?.numberWithCommas(Model?.total.toFixed(2))}
+              </Button>
+            </Box>
           </Box>
 
           <Divider sx={{ mt: 4 }} />
@@ -52,89 +55,144 @@ const Cart = (props: CartItemsProps) => {
           >
             Shopping Cart
           </Typography>
-          <Typography
-            variant="body1"
-            className="Secondary-Text"
-          >
+          <Typography variant="body1" className="Secondary-Text">
             You have {Model?.cartQty} items in your cart
           </Typography>
           <Box>
             {Model?.CartItems.length != 0 ? (
-              Model?.CartItems?.data.length > 0 ? 
-              (
+              Model?.CartItems?.data.length > 0 ? (
                 Model?.CartItems?.data.map((cartItem: any) => {
                   return (
-                    <Box className="BoxCard" key={cartItem?.id} >
+                    <Box className="BoxCard" key={cartItem?.id}>
+                      <Box className="closeIcon">
+                        <CloseIcon
+                         className="closeIconSvg"
+                          fontSize="small"
+                          onClick={() =>
+                            Model?.action?.removeItems(cartItem?.id)
+                          }
+                        />
+                      </Box>
                       <Grid
                         container
                         direction="row"
                         justifyContent="center"
                         alignItems="center"
                       >
-                        <Grid item xs={2}>
-                          <Box sx={{ width: 50, p: 1 }}>
+                        <Grid item xs={12} sm={2} className="imageCart">
+                          <Box className="imageCartWrapper">
                             <CardMedia
                               component="img"
-                              height="30"
+                              height="auto"
                               image={cartItem.image}
                               alt={cartItem?.title}
                             />
                           </Box>
                         </Grid>
-                        <Grid item xs={3} sx={{ p: 1 }}>
-                          {cartItem?.title}
-                        </Grid>
-                        <Grid item xs={3} className="qtyWrapper" >
+
+                        {/* Mobile quantity controller */}
+                        <Grid item xs={12} sm={3} className="MobileqtyWrapper">
                           <span
                             className="qtybutton"
-                            onClick={() => Model?.action?.decreaseQty(cartItem?.id)}
+                            onClick={() =>
+                              Model?.action?.decreaseQty(cartItem?.id)
+                            }
                           >
                             -
                           </span>
                           <Box className="qtyController">
-                            <Typography variant="body1">{cartItem.quantity}</Typography>
+                            <Typography variant="body1">
+                              {cartItem.quantity}
+                            </Typography>
                           </Box>
 
                           <span
                             className="qtybutton"
-                            onClick={() => Model?.action?.increaseQty(cartItem?.id)}
+                            onClick={() =>
+                              Model?.action?.increaseQty(cartItem?.id)
+                            }
                           >
                             +
                           </span>
                         </Grid>
-                        <Grid item xs={3} sx={{ p: 1 }}>
-                          ₱ {Model?.numberWithCommas((cartItem?.quantity * cartItem?.price).toFixed(2))}
+                        {/* End of mobile qty controler */}
+
+                        <Grid item xs={12} sm={3} className="productName">
+                          {cartItem?.title}
                         </Grid>
-                        <Grid item xs={1} sx={{ p: 1 }} >
+                        <Grid item xs={6} sm={3} className="qtyWrapper">
+                          <span
+                            className="qtybutton"
+                            onClick={() =>
+                              Model?.action?.decreaseQty(cartItem?.id)
+                            }
+                          >
+                            -
+                          </span>
+                          <Box className="qtyController">
+                            <Typography variant="body1">
+                              {cartItem.quantity}
+                            </Typography>
+                          </Box>
+
+                          <span
+                            className="qtybutton"
+                            onClick={() =>
+                              Model?.action?.increaseQty(cartItem?.id)
+                            }
+                          >
+                            +
+                          </span>
+                        </Grid>
+                        <Grid item xs={6} sm={2} className="productPrice">
+                          ₱
+                          {Model?.numberWithCommas(
+                            (cartItem?.quantity * cartItem?.price).toFixed(2)
+                          )}
+                        </Grid>
+                        <Grid item xs={12} sm={1} className="DeleteBtnWrapper">
                           <Button
                             variant="text"
                             className="ButtonDelete"
                             startIcon={<DeleteIcon />}
-                            onClick={() => Model?.action?.removeItems(cartItem?.id)}
+                            onClick={() =>
+                              Model?.action?.removeItems(cartItem?.id)
+                            }
                           ></Button>
                         </Grid>
                       </Grid>
                     </Box>
                   );
                 })
-              )
-              : 
-              (
+              ) : (
                 <Box className="BoxEmptyCart">
-                  <Box sx={{
-                    textAlign: "center"
-                  }}>
+                  <Box
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >
                     <AddShoppingCartIcon />
-                    <Typography variant="h6" fontWeight={700}>You don't have item in a cart</Typography>
+                    <Typography variant="h6" fontWeight={700}>
+                      You don't have item in a cart
+                    </Typography>
                   </Box>
                 </Box>
               )
-        
             ) : (
-             <></>
+              <></>
             )}
           </Box>
         </Grid>
+        <Box className="BoxCheckout">
+          <Button
+            variant="contained"
+            className="ButtonCheckout"
+            endIcon={<ArrowForwardIcon />}
+            onClick={Model?.handleDataOut}
+          >
+            Checkout ₱{Model?.numberWithCommas(Model?.total.toFixed(2))}
+          </Button>
+        </Box>
       </Grid>
     </Box>
   );

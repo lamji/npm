@@ -5,6 +5,7 @@
 ## Changelogs
 
 ```sh
+- v0.5.2 - New feature (mobile responsive)
 - v0.4.2 - Patch Release (state not updated)
 - v0.4.1 - Add readme image
 - v0.3.1 - Empty cart added
