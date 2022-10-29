@@ -81,7 +81,6 @@ export default App;
 | dataLoad | Array of object | None | True | Initial data of a cart |
 
 
-
 ## Node Version
 
 ```sh
