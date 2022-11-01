@@ -5,31 +5,24 @@
 ## Changelogs
 
 ```sh
-- v0.6.2 - Patch Release (Cart sort)
-- v0.5.2 - New feature (mobile responsive)
-- v0.4.2 - Patch Release (state not updated)
-- v0.4.1 - Add readme image
-- v0.3.1 - Empty cart added
-- v0.2.1 - Adding props
-- v0.1.1 - Adding redux
-- v0.0.1 - Adding cart and card components
+- v1.0.0 - initial release
 ```
 
 ## Installation
 
 ```sh
-npm i addtocart-mini-app
+npm i serino-add-to-cart
 ```
 
 ## react 18 higher
 ```sh
-npm i addtocart-mini-app --legacy-peer-deps
+npm i serino-add-to-cart --legacy-peer-deps
 ```
 
 ## Usage
 ```sh
 
-import {Cart } from "addtocart-mini-app"
+import {Cart } from "serino-add-to-cart"
 const dataLoad = {
   data:[
     {
