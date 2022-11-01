@@ -17,25 +17,27 @@ export const Cartsample = Template.bind({});
 Cartsample.args = {
   dataOut: (i: any) => console.log("dataOut", i),
   dataLoad: {
-    data:[
+    data: [
       {
         id: 1,
-        dataAdded: "Fri Oct 28 2022 12:33:52 GMT+0800 (Philippine Standard Time)",
         title: "Product 1",
         description: "Best headphone",
-        price: 120.00,
+        price: 120.0,
         quantity: 3,
-        image: "https://i.pinimg.com/originals/0d/86/b1/0d86b14bb6503907498ebff62062ae12.png"
-    },
-    {
+        dateAdded: "Tue Nov 01 2022 20:11:30 GMT+0800 (Philippine Standard Time)",
+        image:
+          "https://i.pinimg.com/originals/0d/86/b1/0d86b14bb6503907498ebff62062ae12.png",
+      },
+      {
         id: 2,
+        dateAdded: "Tue Nov 01 2022 20:10:55 GMT+0800 (Philippine Standard Time)",
         title: "Product 2",
         description: "Best headphone 2",
-        price: 100.00,
-        dateAdded: "Fri Oct 28 2022 12:33:01 GMT+0800 (Philippine Standard Time)",
+        price: 100.0,
         quantity: 1,
-        image: "https://www.nicepng.com/png/detail/151-1512944_red-headphone-png-image-background-beats-by-dr.png"
-    }
+        image:
+          "https://www.nicepng.com/png/detail/151-1512944_red-headphone-png-image-background-beats-by-dr.png",
+      },
     ],
   },
   dataIn: {

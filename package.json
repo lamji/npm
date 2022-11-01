@@ -1,6 +1,6 @@
 {
   "name": "addtocart-mini-app",
-  "version": "0.5.2",
+  "version": "0.6.2",
   "description": "Add to cart mini-app",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",

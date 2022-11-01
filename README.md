@@ -5,6 +5,7 @@
 ## Changelogs
 
 ```sh
+- v0.6.2 - Patch Release (Cart sort)
 - v0.5.2 - New feature (mobile responsive)
 - v0.4.2 - Patch Release (state not updated)
 - v0.4.1 - Add readme image
@@ -37,7 +38,7 @@ const dataLoad = {
       description: "Best headphone",
       price: 120.00,
       quantity: 3,
-      dataAdded: "Fri Oct 28 2022 12:33:52 GMT+0800 (Philippine Standard Time)",
+      dateAdded: "Fri Oct 28 2022 12:33:52 GMT+0800 (Philippine Standard Time)",
       image: "https://i.pinimg.com/originals/0d/86/b1/0d86b14bb6503907498ebff62062ae12.png"
   },
   {

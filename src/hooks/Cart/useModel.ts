@@ -1,6 +1,7 @@
 import { CartItemsProps } from "src/types";
 import {useDispatch,useSelector} from "react-redux"
 import  {setShoppingCart}  from "src/store/actions/cart";
+import Moment from "moment"
 import React from "react";
 
 const useModel = (props:CartItemsProps) => {
@@ -31,9 +32,20 @@ const useModel = (props:CartItemsProps) => {
     const handleDataOut = () => {
         dataOut([...CartItems?.data,{total:total}])
     }
+    const sortByDate = (items:any) => {
+        if (items?.data) {
+          items?.data.sort(function (a:any, b:any) {
+            var c:any = Moment(new Date(a.dateAdded));
+            var d:any = Moment(new Date(b.dateAdded));
+            return c - d;
+          });
+          console.log(items)
+          return items;
+        }
+      };
     
     React.useEffect( () => {
-        dispatch(setShoppingCart(dataLoad))
+        dispatch(setShoppingCart(sortByDate(dataLoad)))
     },[props])
 
     React.useEffect( () => {
