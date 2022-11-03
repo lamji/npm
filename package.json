@@ -1,5 +1,5 @@
 {
-  "name": "serino-add-to-cart",
+  "name": "serino-shopping-cart",
   "version": "1.0.0",
   "description": "Add to cart mini-app",
   "main": "lib/index.js",
