@@ -11,18 +11,18 @@
 ## Installation
 
 ```sh
-npm i serino-add-to-cart
+npm i serino-shopping-cart
 ```
 
 ## react 18 higher
 ```sh
-npm i serino-add-to-cart --legacy-peer-deps
+npm i serino-shopping-cart --legacy-peer-deps
 ```
 
 ## Usage
 ```sh
 
-import {Cart } from "serino-add-to-cart"
+import {Cart } from "serino-shopping-cart"
 const dataLoad = {
   data:[
     {
