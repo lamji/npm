@@ -1,7 +1,7 @@
 {
   "name": "serino-shopping-cart",
   "version": "1.0.0",
-  "description": "Add to cart mini-app",
+  "description": "Shopping cart mini-app",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
