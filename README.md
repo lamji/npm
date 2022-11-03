@@ -5,6 +5,7 @@
 ## Changelogs
 
 ```sh
+- v1.0.1 - Patch Release (Read me image)
 - v1.0.0 - initial release
 ```
 
