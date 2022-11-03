@@ -1,17 +1,17 @@
-import { CartItemsProps } from "src/types";
+import { ICartItemsProps } from "src/types";
 import {useDispatch,useSelector} from "react-redux"
 import  {setShoppingCart}  from "src/store/actions/cart";
 import Moment from "moment"
 import React from "react";
 
-const useModel = (props:CartItemsProps) => {
+const useModel = (props:ICartItemsProps) => {
     const dispatch = useDispatch()
     const [cartQty,setCartQty] = React.useState(0)
     const {dataIn,dataLoad, dataOut} = props
     const [total,setTotal] = React.useState(0)
     const action = dataIn?.action
 
-    const CartItems = useSelector((state: any) => state?.cart?.cartItems);
+    const cartItems = useSelector((state: any) => state?.cart?.cartItems);
 
     function numberWithCommas(x:any) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -20,8 +20,8 @@ const useModel = (props:CartItemsProps) => {
     const getQty = async () => {
         var tempTotal = 0
         var tempQty = 0
-        if(CartItems?.data){
-            const mapState = await CartItems?.data.map((cartItem:any )=> {
+        if(cartItems?.data){
+            const mapState = await cartItems?.data.map((cartItem:any )=> {
                 tempTotal += cartItem?.quantity * cartItem?.price
                 tempQty += cartItem?.quantity
             })
@@ -30,7 +30,7 @@ const useModel = (props:CartItemsProps) => {
         }
     }
     const handleDataOut = () => {
-        dataOut([...CartItems?.data,{total:total}])
+        dataOut([...cartItems?.data,{total:total}])
     }
     const sortByDate = (items:any) => {
         if (items?.data) {
@@ -50,10 +50,10 @@ const useModel = (props:CartItemsProps) => {
 
     React.useEffect( () => {
         getQty()
-    },[CartItems])
+    },[cartItems])
     
     return {
-        CartItems,
+        cartItems,
         cartQty,
         getQty,
         action,

@@ -12,6 +12,10 @@
     "build": "rollup -c",
     "patch": "npx rimraf lib && rollup -c && npm publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamji/npm.git"
+  },
   "author": "Jick Lampago",
   "license": "ISC",
   "files": [

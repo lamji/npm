@@ -9,12 +9,12 @@ import { Grid, Divider, CardMedia } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
 import useModel from "src/hooks/Cart/useModel";
-import { CartItemsProps } from "../../types";
+import { ICartItemsProps } from "../../types";
 import { HOCProvider } from "src/provider";
 import "../../styles/Styles.css";
 
-const Cart = (props: CartItemsProps) => {
-  const Model = useModel(props);
+const Cart = (props: ICartItemsProps) => {
+  const model = useModel(props);
 
   return (
     <Box className="BoxContainer">
@@ -30,7 +30,7 @@ const Cart = (props: CartItemsProps) => {
               variant="text"
               className="Button ButtonDelete"
               startIcon={<ArrowBackIcon />}
-              onClick={Model?.action?.shoplink}
+              onClick={model?.action?.shoplink}
             >
               Back to shop
             </Button>
@@ -39,9 +39,9 @@ const Cart = (props: CartItemsProps) => {
                 variant="contained"
                 className="ButtonCheckout"
                 endIcon={<ArrowForwardIcon />}
-                onClick={Model?.handleDataOut}
+                onClick={model?.handleDataOut}
               >
-                Checkout ₱{Model?.numberWithCommas(Model?.total.toFixed(2))}
+                Checkout ₱{model?.numberWithCommas(model?.total.toFixed(2))}
               </Button>
             </Box>
           </Box>
@@ -56,12 +56,12 @@ const Cart = (props: CartItemsProps) => {
             Shopping Cart
           </Typography>
           <Typography variant="body1" className="Secondary-Text">
-            You have {Model?.cartQty} items in your cart
+            You have {model?.cartQty} items in your cart
           </Typography>
           <Box>
-            {Model?.CartItems.length != 0 ? (
-              Model?.CartItems?.data.length > 0 ? (
-                Model?.CartItems?.data.map((cartItem: any) => {
+            {model?.cartItems.length != 0 ? (
+              model?.cartItems?.data.length > 0 ? (
+                model?.cartItems?.data.map((cartItem: any) => {
                   return (
                     <Box className="BoxCard" key={cartItem?.id}>
                       <Box className="closeIcon">
@@ -69,7 +69,7 @@ const Cart = (props: CartItemsProps) => {
                          className="closeIconSvg"
                           fontSize="small"
                           onClick={() =>
-                            Model?.action?.removeItems(cartItem?.id)
+                            model?.action?.removeItems(cartItem?.id)
                           }
                         />
                       </Box>
@@ -95,7 +95,7 @@ const Cart = (props: CartItemsProps) => {
                           <span
                             className="qtybutton"
                             onClick={() =>
-                              Model?.action?.decreaseQty(cartItem?.id)
+                              model?.action?.decreaseQty(cartItem?.id)
                             }
                           >
                             -
@@ -109,7 +109,7 @@ const Cart = (props: CartItemsProps) => {
                           <span
                             className="qtybutton"
                             onClick={() =>
-                              Model?.action?.increaseQty(cartItem?.id)
+                              model?.action?.increaseQty(cartItem?.id)
                             }
                           >
                             +
@@ -124,7 +124,7 @@ const Cart = (props: CartItemsProps) => {
                           <span
                             className="qtybutton"
                             onClick={() =>
-                              Model?.action?.decreaseQty(cartItem?.id)
+                              model?.action?.decreaseQty(cartItem?.id)
                             }
                           >
                             -
@@ -138,7 +138,7 @@ const Cart = (props: CartItemsProps) => {
                           <span
                             className="qtybutton"
                             onClick={() =>
-                              Model?.action?.increaseQty(cartItem?.id)
+                              model?.action?.increaseQty(cartItem?.id)
                             }
                           >
                             +
@@ -146,7 +146,7 @@ const Cart = (props: CartItemsProps) => {
                         </Grid>
                         <Grid item xs={6} sm={2} className="productPrice">
                           ₱
-                          {Model?.numberWithCommas(
+                          {model?.numberWithCommas(
                             (cartItem?.quantity * cartItem?.price).toFixed(2)
                           )}
                         </Grid>
@@ -156,7 +156,7 @@ const Cart = (props: CartItemsProps) => {
                             className="ButtonDelete"
                             startIcon={<DeleteIcon />}
                             onClick={() =>
-                              Model?.action?.removeItems(cartItem?.id)
+                              model?.action?.removeItems(cartItem?.id)
                             }
                           ></Button>
                         </Grid>
@@ -188,9 +188,9 @@ const Cart = (props: CartItemsProps) => {
             variant="contained"
             className="ButtonCheckout"
             endIcon={<ArrowForwardIcon />}
-            onClick={Model?.handleDataOut}
+            onClick={model?.handleDataOut}
           >
-            Checkout ₱{Model?.numberWithCommas(Model?.total.toFixed(2))}
+            Checkout ₱{model?.numberWithCommas(model?.total.toFixed(2))}
           </Button>
         </Box>
       </Grid>
